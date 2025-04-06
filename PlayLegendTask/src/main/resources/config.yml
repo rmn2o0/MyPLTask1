@@ -1,0 +1,66 @@
+# Configuration for PlayLegendTask Plugin
+
+# Database settings
+# type: "sqlite" or "mysql"
+database:
+  type: "sqlite" # Default to SQLite for ease of use
+  # --- SQLite Settings ---
+  sqlite:
+    filename: "playerdata.db" # Relative path in the plugin's data folder
+  # --- MySQL Settings ---
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "playlegend_groups"
+    username: "user"
+    password: "password"
+    useSSL: false
+    autoReconnect: true
+
+# Default group assigned to new players or when their temporary group expires
+default-group: "Default"
+
+# Settings for the info signs ([GroupInfo] signs)
+signs:
+  enabled: true
+  # Text required on the first line during sign placement to identify it as an info sign.
+  # Player places sign with this text + player name on line 2.
+  creation-identifier: "[GroupInfo]"
+  # How often signs should be updated (in seconds).
+  # Frequent updates can impact performance if many signs exist.
+  update-interval: 8 # Update every 8 seconds
+  # Format for the sign lines. Use placeholders:
+  # %player% - Target player's name
+  # %group_name% - Target player's current group name
+  # %group_prefix% - Target player's current group prefix (with colors)
+  # %expiry_time% - "Permanent" or remaining time (e.g., "1h 30m 10s")
+  line1: "&1[Gruppen Info]" # Top line text after creation
+  line2: "&f%player%"
+  line3: "%group_prefix%"
+  line4: "&7Group: %group_name%" # Example, could show expiry time too/instead
+
+# Tablist prefix settings (simple prefixing)
+tablist:
+  enabled: true
+  format: "%group_prefix% &r%player%" # %player%, %group_name%, %group_prefix%
+
+
+# Scoreboard settings
+# Displays dynamic information on the side of the screen.
+scoreboard:
+  enabled: true
+  # Title of the scoreboard displayed at the top. Use color codes (&).
+  title: "&ePlayer Info"
+  # Lines displayed on the scoreboard, from top to bottom. Use placeholders:
+  # %player%, %group_name%, %group_prefix%, %expiry_time%
+  # %online_players% - Current number of online players
+  # Lines are automatically colored using '&'. Keep lines unique if possible.
+  lines:
+    - "&7----------------" # Example spacer
+    - "&fPlayer: &a%player%"
+    - "&fGroup: %group_name%"
+    - "&7 " # Example empty spacer line
+    - "&fExpires: &e%expiry_time%"
+    - "&7" # Example spacer
+    - "&fOnline: &a%online_players%"
+    - "&7----------------" # Example spacer

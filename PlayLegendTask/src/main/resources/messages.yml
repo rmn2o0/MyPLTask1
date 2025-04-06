@@ -1,0 +1,55 @@
+# Customizable messages for PlayLegendTask Plugin
+# Use '&' for color codes. Placeholders like %player%, %group%, , %time%, %usage%, %details% will be replaced where applicable.
+
+# General plugin prefix prepended to most messages (can be left empty)
+prefix: "&8[&ePLTask&8] &r"
+
+# General errors & feedback
+error:
+  no-permission: "&cYou do not have permission to use this command."
+  player-not-found: "&cPlayer '%player%' not found or has not played before."
+  group-not-found: "&cGroup '%group%' does not exist."
+  invalid-usage: "&cInvalid usage. Use: %usage%"
+  console-cannot-use: "&cThis command can only be used by players."
+  invalid-duration: "&cInvalid duration format. Example: 1d7h30m10s or permanent"
+  must-be-number: "&cInput must be a number."
+  generic: "&cAn error occurred: %details%"
+
+# /group command messages
+group:
+  created: "&aGroup '%group%' with prefix '&r&a' created successfully."
+  deleted: "&aGroup '%group%' deleted successfully. Players in this group may need checking."
+  already-exists: "&cGroup '%group%' already exists."
+  cannot-delete-default: "&cThe default group '%group%' cannot be deleted."
+  setprefix: "&aPrefix for group '%group%' set to '&r&a'."
+  list-header: "&e--- Available Groups ---"
+  list-entry: "&7- &f%group% &7(Prefix: &r%prefix%&7)"
+  list-empty: "&cNo groups found (except possibly the Default group)."
+  usage: "&eUsage: /group <create|delete|list|setprefix> [arguments...]"
+
+# /setgroup command messages
+setgroup:
+  success-permanent: "&aPlayer %player% has been permanently set to group '%group%'."
+  success-temporary: "&aPlayer %player% has been set to group '%group%' for %time%."
+  updated-player: "&aYour group has been updated to '%group%'."
+  updated-player-temp: "&aYour group has been updated to '%group%' for %time%."
+
+# /groupinfo command messages
+groupinfo:
+  header: "&e--- Your Group Information ---"
+  group: "&fCurrent Group: &a%group%"
+  prefix: "&fGroup Prefix: &r"
+  expiry-permanent: "&fMembership: &aPermanent"
+  expiry-temporary: "&fMembership Expires: &e%time%"
+  footer: "&e---------------------------"
+
+# Sign related messages (für SignListener)
+sign:
+  created: "&aGroup info sign created successfully! It will update automatically."
+  not-a-group-sign: "&cThis is not a group info sign."
+  error-creating: "&cCould not create info sign (Invalid format or player '%player%' not found)."
+  broken: "&aGroup info sign removed."
+
+# Messages related to group expiration (für PlayerDataManager)
+expiry:
+  expired-notice: "&eYour temporary group membership has expired. You are now in the default group."

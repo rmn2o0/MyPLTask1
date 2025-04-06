@@ -1,0 +1,33 @@
+name: PlayLegendTask
+version: '1.0-SNAPSHOT'
+main: eu.rawora.playLegendTask.PlayLegendTask
+api-version: '1.21'
+author: Rawora
+description: This plugin, developed for the Playlegend applicant task, implements a comprehensive group and permissions system with time-based assignments and database integration.
+
+commands:
+  group:
+    description: Manages groups (create, delete, list, etc.).
+    usage: /<command> <action> [arguments...]
+    permission: playlegendtask.admin.group
+    aliases: [g, groups]
+  setgroup:
+    description: Assigns a player to a specified group.
+    usage: /<command> <player> <group> [duration]
+    permission: playlegendtask.admin.setgroup
+  groupinfo:
+    description: Shows your current group and remaining time.
+    usage: /<command>
+    # permission: playlegendtask.user.groupinfo (optional, falls gewünscht)
+
+permissions:
+  playlegendtask.admin.*:
+    description: Grants all admin permissions for the task plugin.
+    children:
+      playlegendtask.admin.group: true
+      playlegendtask.admin.setgroup: true
+  # Standardmäßig keine User-Permission für groupinfo,
+  # außer man möchte es explizit einschränken.
+  # playlegendtask.user.groupinfo:
+  #  description: Allows using the /groupinfo command.
+  #  default: true
